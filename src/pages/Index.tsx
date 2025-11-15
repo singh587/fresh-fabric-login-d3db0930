@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { Sparkles, Clock, Shield, Truck } from "lucide-react";
+import { Sparkles, Clock, Shield, Truck, Phone, MapPin } from "lucide-react";
 import { Link } from "react-router-dom";
 
 const Index = () => {
@@ -60,8 +60,20 @@ const Index = () => {
       <section className="relative bg-gradient-to-br from-primary via-secondary to-primary py-20 px-4 overflow-hidden">
         <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiNmZmZmZmYiIGZpbGwtb3BhY2l0eT0iMC4xIj48cGF0aCBkPSJNMzYgMzRjMC0yLjIxLTEuNzktNC00LTRzLTQgMS43OS00IDQgMS43OSA0IDQgNCA0LTEuNzkgNC00em0wLTEyYzAtMi4yMS0xLjc5LTQtNC00cy00IDEuNzktNCA0IDEuNzkgNCA0IDQgNC0xLjc5IDQtNHptMC0xMmMwLTIuMjEtMS43OS00LTQtNHMtNCAxLjc5LTQgNCAxLjc5IDQgNCA0IDQtMS43OSA0LTR6Ii8+PC9nPjwvZz48L3N2Zz4=')] opacity-30"></div>
         <div className="container mx-auto max-w-6xl relative z-10">
-          <div className="flex justify-between items-center mb-16">
-            <h1 className="text-2xl font-bold text-primary-foreground">CleanEase</h1>
+          <div className="flex justify-between items-center mb-16 flex-wrap gap-4">
+            <div>
+              <h1 className="text-2xl font-bold text-primary-foreground mb-2">CleanEase</h1>
+              <div className="flex flex-col sm:flex-row gap-3 text-primary-foreground/90 text-sm">
+                <a href="tel:+919876543210" className="flex items-center gap-2 hover:text-primary-foreground transition-colors">
+                  <Phone className="h-4 w-4" />
+                  <span>+91 98765 43210</span>
+                </a>
+                <div className="flex items-center gap-2">
+                  <MapPin className="h-4 w-4" />
+                  <span>Kolkata, West Bengal</span>
+                </div>
+              </div>
+            </div>
             <Link to="/auth">
               <Button variant="secondary" size="lg">
                 Login / Sign Up
@@ -152,9 +164,46 @@ const Index = () => {
       </section>
 
       {/* Footer */}
-      <footer className="bg-card py-8 px-4 border-t">
-        <div className="container mx-auto max-w-6xl text-center text-muted-foreground">
-          <p>&copy; 2025 CleanEase Laundry Service. All rights reserved.</p>
+      <footer className="bg-card py-12 px-4 border-t">
+        <div className="container mx-auto max-w-6xl">
+          <div className="grid md:grid-cols-3 gap-8 mb-8">
+            <div>
+              <h3 className="text-lg font-bold mb-4">CleanEase</h3>
+              <p className="text-muted-foreground text-sm">
+                Your trusted partner for professional laundry services with free pickup and delivery.
+              </p>
+            </div>
+            <div>
+              <h3 className="text-lg font-bold mb-4">Contact Us</h3>
+              <div className="space-y-3 text-sm">
+                <a href="tel:+919876543210" className="flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors">
+                  <Phone className="h-4 w-4" />
+                  <span>+91 98765 43210</span>
+                </a>
+                <div className="flex items-start gap-2 text-muted-foreground">
+                  <MapPin className="h-4 w-4 mt-0.5" />
+                  <span>EM-4/1, Sector-V, Salt Lake<br />Kolkata - 700091<br />West Bengal, India</span>
+                </div>
+              </div>
+            </div>
+            <div>
+              <h3 className="text-lg font-bold mb-4">Quick Links</h3>
+              <div className="space-y-2 text-sm">
+                <Link to="/services" className="block text-muted-foreground hover:text-primary transition-colors">
+                  Our Services
+                </Link>
+                <Link to="/auth" className="block text-muted-foreground hover:text-primary transition-colors">
+                  Login / Sign Up
+                </Link>
+                <Link to="/booking" className="block text-muted-foreground hover:text-primary transition-colors">
+                  Book Now
+                </Link>
+              </div>
+            </div>
+          </div>
+          <div className="text-center text-muted-foreground text-sm pt-8 border-t">
+            <p>&copy; 2025 CleanEase Laundry Service. All rights reserved.</p>
+          </div>
         </div>
       </footer>
     </div>
