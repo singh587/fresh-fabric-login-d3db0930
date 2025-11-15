@@ -70,7 +70,7 @@ const Index = () => {
                 </a>
                 <div className="flex items-center gap-2">
                   <MapPin className="h-4 w-4" />
-                  <span>Kolkata, West Bengal</span>
+                  <span>Mumbai, Maharashtra</span>
                 </div>
               </div>
             </div>
@@ -182,7 +182,7 @@ const Index = () => {
                 </a>
                 <div className="flex items-start gap-2 text-muted-foreground">
                   <MapPin className="h-4 w-4 mt-0.5" />
-                  <span>EM-4/1, Sector-V, Salt Lake<br />Kolkata - 700091<br />West Bengal, India</span>
+                  <span>Andheri West, Mumbai<br />Maharashtra - 400058<br />India</span>
                 </div>
               </div>
             </div>
