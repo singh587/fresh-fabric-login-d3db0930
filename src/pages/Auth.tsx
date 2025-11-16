@@ -87,10 +87,10 @@ const Auth = () => {
           <p className="text-muted-foreground">Welcome to professional laundry service</p>
         </div>
 
-        <Tabs defaultValue="login" className="w-full">
+        <Tabs defaultValue="signup" className="w-full">
           <TabsList className="grid w-full grid-cols-2">
-            <TabsTrigger value="login">Login</TabsTrigger>
             <TabsTrigger value="signup">Sign Up</TabsTrigger>
+            <TabsTrigger value="login">Login</TabsTrigger>
           </TabsList>
 
           <TabsContent value="login">
