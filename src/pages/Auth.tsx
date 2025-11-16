@@ -30,7 +30,10 @@ const Auth = () => {
       return;
     }
 
-    // Simulated login
+    // Simulated login - store session
+    localStorage.setItem("isLoggedIn", "true");
+    localStorage.setItem("userEmail", loginEmail);
+    
     toast({
       title: "Success!",
       description: "You have successfully logged in.",
@@ -68,12 +71,16 @@ const Auth = () => {
       return;
     }
 
-    // Simulated signup
+    // Simulated signup - store session
+    localStorage.setItem("isLoggedIn", "true");
+    localStorage.setItem("userEmail", signupEmail);
+    localStorage.setItem("userName", signupName);
+    
     toast({
       title: "Success!",
-      description: "Your account has been created. Please login.",
+      description: "Your account has been created successfully!",
     });
-    // Switch to login tab after successful signup
+    navigate("/dashboard");
   };
 
   return (
