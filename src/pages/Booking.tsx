@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Label } from "@/components/ui/label";
@@ -8,9 +8,11 @@ import { Textarea } from "@/components/ui/textarea";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { useToast } from "@/hooks/use-toast";
 import { useNavigate } from "react-router-dom";
-import { ArrowLeft, Calendar, Clock, MapPin } from "lucide-react";
+import { ArrowLeft, Calendar, Clock, MapPin, AlertCircle } from "lucide-react";
+import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 
 const Booking = () => {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [serviceType, setServiceType] = useState("");
   const [itemCount, setItemCount] = useState("");
   const [pickupDate, setPickupDate] = useState("");
@@ -23,8 +25,23 @@ const Booking = () => {
   const { toast } = useToast();
   const navigate = useNavigate();
 
+  useEffect(() => {
+    const loggedIn = localStorage.getItem("isLoggedIn") === "true";
+    setIsLoggedIn(loggedIn);
+  }, []);
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+
+    if (!isLoggedIn) {
+      toast({
+        title: "Login Required",
+        description: "Please register or login to book a service.",
+        variant: "destructive",
+      });
+      navigate("/auth");
+      return;
+    }
 
     if (!serviceType || !itemCount || !pickupDate || !pickupTime || !deliveryTime || !address) {
       toast({
@@ -69,6 +86,22 @@ const Booking = () => {
       {/* Booking Form */}
       <section className="py-12 px-4">
         <div className="container mx-auto max-w-4xl">
+          {!isLoggedIn && (
+            <Alert variant="destructive" className="mb-6">
+              <AlertCircle className="h-4 w-4" />
+              <AlertTitle>Authentication Required</AlertTitle>
+              <AlertDescription>
+                You must be registered and logged in to book a service.{" "}
+                <Button 
+                  variant="link" 
+                  className="p-0 h-auto text-destructive-foreground underline"
+                  onClick={() => navigate("/auth")}
+                >
+                  Click here to register or login
+                </Button>
+              </AlertDescription>
+            </Alert>
+          )}
           <form onSubmit={handleSubmit}>
             <div className="grid gap-6">
               {/* Service Selection */}
